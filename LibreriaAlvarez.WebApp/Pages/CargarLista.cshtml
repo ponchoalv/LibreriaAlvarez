@@ -1,0 +1,42 @@
+﻿@page "/load-prices"
+
+<h1>Carga Listas de Precios</h1>
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <form action="http://localhost:3000/api/cargar-lista" method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="file">Archivo a utilizar:</label>
+                    <input type="file" name="file" id="file" class="form-control-file border" required />
+                </div>
+                <div class="form-group">
+                    <label for="fecha">Fecha de la lista (totas las listas deben tener la misma fecha):</label>
+                    <input type="date" name="fecha" id="fecha" class="form-control" format-value="yyyy-MM-dd" required />
+                </div>
+                <div class="form-group">
+                    <label for="tipo-lista">Seleccionar el tipo de lista:</label>
+                    <select class="form-control" name="tipo-lista" id="tipo-lista" required>
+                        <option>yo-yo</option>
+                        <option>powerland</option>
+                    </select>
+                </div>
+               <div class="form-group">
+                    <label for="nombre-lista">Seleccionar el nombre de la lista:</label>
+                    <select class="form-control" name="nombre-lista" id="nombre-lista" required>
+                        <option>POWERLAND</option>
+                        <option>YOYO</option>
+                        <option>YOYO-TOYS</option>
+                    </select>
+                </div>
+               <input type="hidden" name="nombre-hoja" value="precios" />
+               <button type="submit" class="btn btn-primary">Subir Planilla</button>
+            </form>
+        </div>
+        <div class="col">
+        </div>
+    </div>
+</div>
+
+@functions {
+
+}

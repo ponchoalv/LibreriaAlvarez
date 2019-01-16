@@ -1,0 +1,151 @@
+﻿@using LibreriaAlvarez.WebApp.Services
+@page "/fetch-prices"
+@inject LibreriaPriceService LibreriaPriceservice
+
+<h1>Lista de Precios</h1>
+
+@if (topPrecios == null)
+{
+    <p><em>Cargando...</em></p>
+}
+else
+{
+    <p>Buscar entre <b>@total</b> articulos de librería y juguetes.</p>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="buscar-addon">Buscar por Nombre</span>
+                    </div>
+                    <input type="text" placeholder="ABACO" value=@searchCriteria oninput=@OnChangeSearchCriteria class="form-control" aria-describedby="buscar-addon" aria-label="Buscar Articulo" />
+                </div>
+            </div>
+            <div class="col">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="buscar-codigo">Buscar por Lista</span>
+                    </div>
+                    <input type="text" placeholder="Powerland" value=@searchCriteriaList oninput=@OnChangeListSearch class="form-control" aria-describedby="buscar-codigo" aria-label="Buscar por código" />
+                </div>
+            </div>
+        </div>
+    </div>
+    <br />
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th>Descripción</th>
+                    <th>Lista</th>
+                    <th>Precio</th>
+                    <th>Fecha de la Lista</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var precio in topPrecios)
+                {
+                    <tr>
+                        <td>@precio.Desc</td>
+                        <td>@precio.Lista</td>
+                        <td>@precio.Price.ToString("C2")</td>
+                        <td>@precio.Fecha.ToString("yyyy-MM-dd")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+
+    <br />
+    <button class="btn btn-primary" onclick=@DownLoadExcel>Descargar Lista de Precios</button>
+    <br />
+    <br />
+
+}
+
+@functions {
+    LibreriaPrice[] precios;
+
+    IEnumerable<LibreriaPrice> topPrecios;
+
+    string searchCriteria = "";
+    string searchCriteriaList = "";
+    int total = 0;
+
+    void OnChangeSearchCriteria(UIChangeEventArgs arg)
+    {
+        searchCriteria = arg.Value.ToString().ToUpper();
+    }
+
+    void OnChangeListSearch(UIChangeEventArgs arg)
+    {
+        searchCriteriaList = arg.Value.ToString().ToUpper();
+    }
+
+    protected override async Task OnInitAsync()
+    {
+        precios = await LibreriaPriceservice.GetPricesAsync().ConfigureAwait(false);
+
+        topPrecios = await Task.Run(() => (from p in precios where p.Desc.Contains(searchCriteria) && p.Lista.Contains(searchCriteriaList) select p).Take(20)).ConfigureAwait(false);
+
+        total = precios.Length;
+    }
+
+    protected async Task DownLoadExcel()
+    {
+        await Task.Run(async () =>
+        {
+            using (var package = new ExcelPackage())
+            {
+
+                var worksheet = package.Workbook.Worksheets.Add("Lista Precios");
+                worksheet.DefaultColWidth = 25;
+
+                //Aumentar tamaño de la columna descripción
+                worksheet.Column(2).Width = 50;
+
+                var header = worksheet.Cells["B1:F1"];
+                header.Style.Font.Bold = true;
+                header.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                header.Style.Font.Color.SetColor(Color.White);
+                header.Style.Fill.BackgroundColor.SetColor(Color.DarkBlue);
+
+
+                header.Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                header.Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                header.Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+                header.Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thick;
+
+                worksheet.Cells["B1"].Value = "Descripción";
+                worksheet.Cells["C1"].Value = "Lista";
+                worksheet.Cells["D1"].Value = "Codigo";
+                worksheet.Cells["E1"].Value = "Precio";
+                worksheet.Cells["F1"].Value = "Fecha";
+
+                var tableBody = worksheet.Cells["B2:B2"].LoadFromCollection(
+                    from p in precios
+                    select new { p.Desc, p.Lista, p.Code, p.Price, p.Fecha }, false);
+
+                tableBody.Style.Fill.PatternType = OfficeOpenXml.Style.ExcelFillStyle.Solid;
+                tableBody.Style.Fill.BackgroundColor.SetColor(Color.WhiteSmoke);
+
+                tableBody.Style.Border.Bottom.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                tableBody.Style.Border.Top.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                tableBody.Style.Border.Left.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+                tableBody.Style.Border.Right.Style = OfficeOpenXml.Style.ExcelBorderStyle.Thin;
+
+                tableBody.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Medium);
+
+                // formato del tipo de fecha
+                var fechasCol = tableBody.Offset(0, 4, precios.Length, 1);
+                fechasCol.Style.Numberformat.Format = "DDD d MMM yyyy";
+
+                // formato del tipo de precio
+                var precioCol = tableBody.Offset(0, 3, precios.Length, 1);
+                precioCol.Style.Numberformat.Format = "$###,###,##0.00";
+
+                await FileUtil.SaveAs("PreciosLibreria.xlsx", package.GetAsByteArray()).ConfigureAwait(false);
+            }
+        }).ConfigureAwait(false);
+    }
+}

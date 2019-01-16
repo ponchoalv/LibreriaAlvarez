@@ -1,0 +1,54 @@
+C:\Users\ponch\.nuget\packages\epplus\4.5.2.1\lib\netstandard2.0\EPPlus.dll
+C:\Users\ponch\.nuget\packages\microsoft.aspnetcore.blazor\0.7.0\lib\netstandard2.0\Microsoft.AspNetCore.Blazor.dll
+C:\Users\ponch\.nuget\packages\microsoft.aspnetcore.blazor.browser\0.7.0\lib\netstandard2.0\Microsoft.AspNetCore.Blazor.Browser.dll
+C:\Users\ponch\.nuget\packages\microsoft.aspnetcore.blazor.build\0.7.0\lib\netstandard1.0\Microsoft.AspNetCore.Blazor.TagHelperWorkaround.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\microsoft.csharp\4.3.0\lib\netstandard1.3\Microsoft.CSharp.dll
+C:\Users\ponch\.nuget\packages\microsoft.extensions.configuration\2.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.dll
+C:\Users\ponch\.nuget\packages\microsoft.extensions.configuration.abstractions\2.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\ponch\.nuget\packages\microsoft.extensions.configuration.fileextensions\2.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.FileExtensions.dll
+C:\Users\ponch\.nuget\packages\microsoft.extensions.configuration.json\2.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Json.dll
+C:\Users\ponch\.nuget\packages\microsoft.extensions.dependencyinjection\2.1.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\ponch\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\2.1.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\ponch\.nuget\packages\microsoft.extensions.fileproviders.abstractions\2.0.0\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Abstractions.dll
+C:\Users\ponch\.nuget\packages\microsoft.extensions.fileproviders.physical\2.0.0\lib\netstandard2.0\Microsoft.Extensions.FileProviders.Physical.dll
+C:\Users\ponch\.nuget\packages\microsoft.extensions.filesystemglobbing\2.0.0\lib\netstandard2.0\Microsoft.Extensions.FileSystemGlobbing.dll
+C:\Users\ponch\.nuget\packages\microsoft.extensions.primitives\2.0.0\lib\netstandard2.0\Microsoft.Extensions.Primitives.dll
+C:\Users\ponch\.nuget\packages\microsoft.jsinterop\0.7.0\lib\netstandard2.0\Microsoft.JSInterop.dll
+C:\Users\ponch\.nuget\packages\mono.webassembly.interop\0.7.0\lib\netstandard2.0\Mono.WebAssembly.Interop.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\newtonsoft.json\10.0.1\lib\netstandard1.3\Newtonsoft.Json.dll
+C:\Users\ponch\.nuget\packages\system.collections.concurrent\4.3.0\lib\netstandard1.3\System.Collections.Concurrent.dll
+C:\Users\ponch\.nuget\packages\system.collections.nongeneric\4.3.0\lib\netstandard1.3\System.Collections.NonGeneric.dll
+C:\Users\ponch\.nuget\packages\system.collections.specialized\4.3.0\lib\netstandard1.3\System.Collections.Specialized.dll
+C:\Users\ponch\.nuget\packages\system.componentmodel\4.3.0\lib\netstandard1.3\System.ComponentModel.dll
+C:\Users\ponch\.nuget\packages\system.componentmodel.primitives\4.3.0\lib\netstandard1.0\System.ComponentModel.Primitives.dll
+C:\Users\ponch\.nuget\packages\system.componentmodel.typeconverter\4.3.0\lib\netstandard1.5\System.ComponentModel.TypeConverter.dll
+C:\Users\ponch\.nuget\packages\system.data.common\4.3.0\lib\netstandard1.2\System.Data.Common.dll
+C:\Users\ponch\.nuget\packages\system.drawing.common\4.5.0\lib\netstandard2.0\System.Drawing.Common.dll
+C:\Users\ponch\.nuget\packages\system.dynamic.runtime\4.3.0\lib\netstandard1.3\System.Dynamic.Runtime.dll
+C:\Users\ponch\.nuget\packages\system.io.filesystem.primitives\4.3.0\lib\netstandard1.3\System.IO.FileSystem.Primitives.dll
+C:\Users\ponch\.nuget\packages\system.linq\4.3.0\lib\netstandard1.6\System.Linq.dll
+C:\Users\ponch\.nuget\packages\system.linq.expressions\4.3.0\lib\netstandard1.6\System.Linq.Expressions.dll
+C:\Users\ponch\.nuget\packages\system.objectmodel\4.3.0\lib\netstandard1.3\System.ObjectModel.dll
+C:\Users\ponch\.nuget\packages\system.reflection.emit\4.3.0\lib\netstandard1.3\System.Reflection.Emit.dll
+C:\Users\ponch\.nuget\packages\system.reflection.emit.ilgeneration\4.3.0\lib\netstandard1.3\System.Reflection.Emit.ILGeneration.dll
+C:\Users\ponch\.nuget\packages\system.reflection.emit.lightweight\4.3.0\lib\netstandard1.3\System.Reflection.Emit.Lightweight.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.reflection.typeextensions\4.3.0\lib\netstandard1.5\System.Reflection.TypeExtensions.dll
+C:\Users\ponch\.nuget\packages\system.runtime.compilerservices.unsafe\4.4.0\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ponch\.nuget\packages\system.runtime.numerics\4.3.0\lib\netstandard1.3\System.Runtime.Numerics.dll
+C:\Users\ponch\.nuget\packages\system.runtime.serialization.formatters\4.3.0\lib\netstandard1.4\System.Runtime.Serialization.Formatters.dll
+C:\Users\ponch\.nuget\packages\system.runtime.serialization.primitives\4.3.0\lib\netstandard1.3\System.Runtime.Serialization.Primitives.dll
+C:\Users\ponch\.nuget\packages\system.security.claims\4.3.0\lib\netstandard1.3\System.Security.Claims.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.security.cryptography.openssl\4.3.0\lib\netstandard1.6\System.Security.Cryptography.OpenSsl.dll
+C:\Users\ponch\.nuget\packages\system.security.cryptography.pkcs\4.4.0\lib\netstandard2.0\System.Security.Cryptography.Pkcs.dll
+C:\Users\ponch\.nuget\packages\system.security.cryptography.primitives\4.3.0\lib\netstandard1.3\System.Security.Cryptography.Primitives.dll
+C:\Users\ponch\.nuget\packages\system.security.principal\4.3.0\lib\netstandard1.0\System.Security.Principal.dll
+C:\Users\ponch\.nuget\packages\system.text.encoding.codepages\4.4.0\lib\netstandard2.0\System.Text.Encoding.CodePages.dll
+C:\Users\ponch\.nuget\packages\system.text.regularexpressions\4.3.0\lib\netstandard1.6\System.Text.RegularExpressions.dll
+C:\Users\ponch\.nuget\packages\system.threading\4.3.0\lib\netstandard1.3\System.Threading.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.threading.tasks.extensions\4.3.0\lib\netstandard1.0\System.Threading.Tasks.Extensions.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.xml.readerwriter\4.3.0\lib\netstandard1.3\System.Xml.ReaderWriter.dll
+C:\Users\ponch\.nuget\packages\system.xml.xdocument\4.3.0\lib\netstandard1.3\System.Xml.XDocument.dll
+C:\Users\ponch\.nuget\packages\system.xml.xmldocument\4.3.0\lib\netstandard1.3\System.Xml.XmlDocument.dll
+C:\Program Files\dotnet\sdk\NuGetFallbackFolder\system.xml.xpath\4.3.0\lib\netstandard1.3\System.Xml.XPath.dll
+C:\Users\ponch\.nuget\packages\system.xml.xpath.xmldocument\4.3.0\lib\netstandard1.3\System.Xml.XPath.XmlDocument.dll
+C:\Users\ponch\projects\LibreriaAlvarez\FileUtil\bin\Debug\netstandard2.0\FileLib.dll
