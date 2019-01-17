@@ -1,42 +1,122 @@
-﻿@page "/load-prices"
+﻿@using System.Net.Http
+@using LibreriaAlvarez.WebApp.Services
+@inject LibreriaPriceService LibreriaPriceservice
+
+@page "/load-prices"
+
 
 <h1>Carga Listas de Precios</h1>
 <div class="container">
     <div class="row">
         <div class="col">
-            <form action="http://localhost:3000/api/cargar-lista" method="post" enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="file">Archivo a utilizar:</label>
-                    <input type="file" name="file" id="file" class="form-control-file border" required />
+            <form action="about:blank">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="file">Archivo a utilizar:</label>
+                            <div class="custom-file">
+                                <input type="file" class="custom-file-input" id="planilla" onchange=@FileComponentChanged required />
+                                <label class="custom-file-label" for="planilla">Seleccionar archivo...</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="fecha">Fecha de la lista:</label>
+                            <input type="date" name="fecha" id="fecha" class="form-control" format-value="yyyy-MM-dd" bind=@formCarga.Fecha required />
+                        </div>
+                    </div>
+                    <div class="col"></div>
                 </div>
-                <div class="form-group">
-                    <label for="fecha">Fecha de la lista (totas las listas deben tener la misma fecha):</label>
-                    <input type="date" name="fecha" id="fecha" class="form-control" format-value="yyyy-MM-dd" required />
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="tipo-lista">Seleccionar el tipo de lista:</label>
+                            <select class="custom-select custom-select-sm" name="tipo-lista" id="tipo-lista" bind=@formCarga.TipoLista required>
+                                <option selected disabled>-- Seleccionar tipo de Lista --</option>
+                                <option value="yo-yo">yo-yo</option>
+                                <option value="powerland">powerland</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="nombre-lista">Seleccionar el nombre de la lista:</label>
+                            <select class="custom-select custom-select-sm" name="nombre-lista" id="nombre-lista" bind=@formCarga.NombreLista required>
+                                <option selected disabled>-- Seleccionar Lista --</option>
+                                <option value="POWERLAND">POWERLAND</option>
+                                <option value="YOYO">YOYO</option>
+                                <option value="YOYO-TOYS">YOYO-TOYS</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col"></div>
                 </div>
-                <div class="form-group">
-                    <label for="tipo-lista">Seleccionar el tipo de lista:</label>
-                    <select class="form-control" name="tipo-lista" id="tipo-lista" required>
-                        <option>yo-yo</option>
-                        <option>powerland</option>
-                    </select>
-                </div>
-               <div class="form-group">
-                    <label for="nombre-lista">Seleccionar el nombre de la lista:</label>
-                    <select class="form-control" name="nombre-lista" id="nombre-lista" required>
-                        <option>POWERLAND</option>
-                        <option>YOYO</option>
-                        <option>YOYO-TOYS</option>
-                    </select>
-                </div>
-               <input type="hidden" name="nombre-hoja" value="precios" />
-               <button type="submit" class="btn btn-primary">Subir Planilla</button>
             </form>
-        </div>
-        <div class="col">
+            <button type="submit" class="btn btn-primary" onclick=@UploadList disabled=@(!submitButtonEnabled)>Subir Planilla</button>
+            @if (result)
+            {
+                <br />
+                <span class="badge badge-pill badge-success">La planilla fue cargada exitosamente!!</span>
+            }
         </div>
     </div>
 </div>
 
 @functions {
+    FormCarga formCarga = new FormCarga();
+    bool result = false;
+    bool submitButtonEnabled = true;
 
+    async Task UploadList()
+    {
+        submitButtonEnabled = false;
+        formCarga.NombreHoja = "precios";
+
+        Console.WriteLine("fecha -> {0}", formCarga.Fecha.ToString("yyyy-MM-dd"));
+        Console.WriteLine("tipo lista -> {0}", formCarga.TipoLista);
+        Console.WriteLine("nombre lista -> {0}", formCarga.NombreLista);
+        Console.WriteLine("nombre hoja -> {0}", formCarga.NombreHoja);
+
+        using (var form = new MultipartFormDataContent())
+        {
+
+            var fecha = new StringContent(formCarga.Fecha.ToString("yyyy-MM-dd"));
+            fecha.Headers.Remove("Content-Disposition");
+            fecha.Headers.Add("Content-Disposition", "form-data; name=\"fecha\"");
+
+            var tipoLista = new StringContent(formCarga.TipoLista);
+            tipoLista.Headers.Remove("Content-Disposition");
+            tipoLista.Headers.Add("Content-Disposition", "form-data; name=\"tipo-lista\"");
+
+            var nombreLista = new StringContent(formCarga.NombreLista);
+            nombreLista.Headers.Remove("Content-Disposition");
+            nombreLista.Headers.Add("Content-Disposition", "form-data; name=\"nombre-lista\"");
+
+            var nombreHoja = new StringContent(formCarga.NombreHoja);
+            nombreHoja.Headers.Remove("Content-Disposition");
+            nombreHoja.Headers.Add("Content-Disposition", "form-data; name=\"nombre-hoja\"");
+
+            formCarga.ListaFile.Headers.Remove("Content-Type");
+            formCarga.ListaFile.Headers.Add("Content-Type", "application/vnd.ms-excel");
+            formCarga.ListaFile.Headers.Remove("Content-Disposition");
+            formCarga.ListaFile.Headers.Add("Content-Disposition", "form-data; name=\"file\"; filename=\"planilla.xls\"");
+
+            form.Add(fecha);
+            form.Add(tipoLista);
+            form.Add(nombreLista);
+            form.Add(nombreHoja);
+            form.Add(formCarga.ListaFile);
+
+            var respuesta = await LibreriaPriceservice.PostCargarPlanilla(form).ConfigureAwait(false);
+            result = respuesta.IsSuccessStatusCode;
+            submitButtonEnabled = true;
+        }
+    }
+
+    async Task FileComponentChanged()
+    {
+        var data = await FileUtil.ReadFileByID("planilla");
+        formCarga.ListaFile = new ByteArrayContent(Convert.FromBase64String(data));
+    }
 }

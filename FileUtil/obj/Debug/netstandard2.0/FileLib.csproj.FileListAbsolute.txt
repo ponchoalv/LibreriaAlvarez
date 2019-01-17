@@ -8,7 +8,6 @@ C:\Users\ponch\projects\LibreriaAlvarez\FileUtil\bin\Debug\netstandard2.0\Micros
 C:\Users\ponch\projects\LibreriaAlvarez\FileUtil\bin\Debug\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\ponch\projects\LibreriaAlvarez\FileUtil\bin\Debug\netstandard2.0\Microsoft.JSInterop.dll
 C:\Users\ponch\projects\LibreriaAlvarez\FileUtil\bin\Debug\netstandard2.0\Mono.WebAssembly.Interop.dll
-C:\Users\ponch\projects\LibreriaAlvarez\FileUtil\obj\Debug\netstandard2.0\FileLib.csprojAssemblyReference.cache
 C:\Users\ponch\projects\LibreriaAlvarez\FileUtil\obj\Debug\netstandard2.0\FileLib.csproj.CoreCompileInputs.cache
 C:\Users\ponch\projects\LibreriaAlvarez\FileUtil\obj\Debug\netstandard2.0\Blazor.inputs.txt
 C:\Users\ponch\projects\LibreriaAlvarez\FileUtil\obj\Debug\netstandard2.0\Blazor.components.input.cache
@@ -18,3 +17,4 @@ C:\Users\ponch\projects\LibreriaAlvarez\FileUtil\obj\Debug\netstandard2.0\FileLi
 C:\Users\ponch\projects\LibreriaAlvarez\FileUtil\obj\Debug\netstandard2.0\FileLib.csproj.CopyComplete
 C:\Users\ponch\projects\LibreriaAlvarez\FileUtil\obj\Debug\netstandard2.0\FileLib.dll
 C:\Users\ponch\projects\LibreriaAlvarez\FileUtil\obj\Debug\netstandard2.0\FileLib.pdb
+C:\Users\ponch\projects\LibreriaAlvarez\FileUtil\obj\Debug\netstandard2.0\FileLib.csprojAssemblyReference.cache

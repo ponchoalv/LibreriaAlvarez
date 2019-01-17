@@ -76,7 +76,7 @@ C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\bin\Debug\netstan
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\bin\Debug\netstandard2.0\dist\_framework\_bin\LibreriaAlvarez.WebApp.pdb
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\bin\Debug\netstandard2.0\dist\_framework\_bin\FileLib.pdb
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\bin\Debug\netstandard2.0\dist\_framework\blazor.boot.json
-C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\bin\Debug\netstandard2.0\dist\_content\FileLib\saveAsFile.js
+C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\bin\Debug\netstandard2.0\dist\_content\FileLib\readAndSaveFiles.js
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\bin\Debug\netstandard2.0\EPPlus.dll
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Blazor.dll
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\bin\Debug\netstandard2.0\Microsoft.AspNetCore.Blazor.Browser.dll
@@ -136,6 +136,7 @@ C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstan
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\LibreriaAlvarez.WebApp.csproj.CoreCompileInputs.cache
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\Blazor.inputs.txt
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\App.g.i.cs
+C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\Pages\CargarLista.g.i.cs
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\Pages\Index.g.i.cs
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\Pages\ListaPrecios.g.i.cs
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\Pages\_ViewImports.g.i.cs
@@ -146,6 +147,7 @@ C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstan
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\Blazor.components.input.cache
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\Blazor.definition.components.json
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\App.g.cs
+C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\Pages\CargarLista.g.cs
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\Pages\Index.g.cs
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\Pages\ListaPrecios.g.cs
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\Pages\_ViewImports.g.cs
@@ -232,6 +234,4 @@ C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstan
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\blazor\resolvedassemblies\FileLib.pdb
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\blazor\inputs.bootjson.cache
 C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\blazor\blazor.boot.json
-C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\blazor\_content\FileLib\saveAsFile.js
-C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\Pages\CargarLista.g.i.cs
-C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\Pages\CargarLista.g.cs
+C:\Users\ponch\projects\LibreriaAlvarez\LibreriaAlvarez.WebApp\obj\Debug\netstandard2.0\blazor\_content\FileLib\readAndSaveFiles.js

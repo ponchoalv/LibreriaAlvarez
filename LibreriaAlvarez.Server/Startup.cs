@@ -38,7 +38,15 @@ namespace LibreriaAlvarez.Server
             }
 
             // Use component registrations and static files from the app project.
-            app.UseServerSideBlazor<WebApp.Startup>();
+            // app.UseServerSideBlazor<WebApp.Startup>();
+
+            app.UseSignalR(route => route.MapHub<BlazorHub>(BlazorHub.DefaultPath, o =>
+            {
+                o.ApplicationMaxBufferSize = 0;
+                o.TransportMaxBufferSize = 0; 
+            }));
+
+            app.UseBlazor<WebApp.Startup>();
         }
     }
 }

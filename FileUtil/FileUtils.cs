@@ -11,6 +11,10 @@ namespace FileLib
                 "saveAsFile",
                 filename,
                 Convert.ToBase64String(data));
+        public static Task<string> ReadFileByID(string fileId)
+            => JSRuntime.Current.InvokeAsync<string>(
+                           "readFileById",
+                           fileId);
     }
 }
 
