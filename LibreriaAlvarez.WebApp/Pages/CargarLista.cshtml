@@ -16,7 +16,7 @@
                             <label for="file">Archivo a utilizar:</label>
                             <div class="custom-file">
                                 <input type="file" class="custom-file-input" id="planilla" onchange=@FileComponentChanged required />
-                                <label class="custom-file-label" for="planilla">Seleccionar archivo...</label>
+                                <label class="custom-file-label" for="planilla">@nombreArchivo</label>
                             </div>
                         </div>
                     </div>
@@ -54,10 +54,12 @@
                 </div>
             </form>
             <button type="submit" class="btn btn-primary" onclick=@UploadList disabled=@(!submitButtonEnabled)>Subir Planilla</button>
-            @if (result)
+            @if(result)
             {
-                <br />
-                <span class="badge badge-pill badge-success">La planilla fue cargada exitosamente!!</span>
+            <div class="alert alert-success alert-dismissible" >
+                <button type="button" class="close" data-dismiss="alert" onclick=@Close>&times;</button>
+                <strong>Exito!</strong> La planilla fue cargada exitosamente!!
+            </div>
             }
         </div>
     </div>
@@ -67,6 +69,11 @@
     FormCarga formCarga = new FormCarga();
     bool result = false;
     bool submitButtonEnabled = true;
+    string nombreArchivo = "Seleccionar archivo...";
+    async Task Close()
+    {
+        await Task.Run(() => result = false);
+    }
 
     async Task UploadList()
     {
@@ -111,11 +118,17 @@
             var respuesta = await LibreriaPriceservice.PostCargarPlanilla(form).ConfigureAwait(false);
             result = respuesta.IsSuccessStatusCode;
             submitButtonEnabled = true;
+
+            formCarga.NombreLista = "";
+            formCarga.TipoLista = "";
+
+            nombreArchivo = "Seleccionar archivo...";
         }
     }
 
-    async Task FileComponentChanged()
+    async Task FileComponentChanged(UIChangeEventArgs arg)
     {
+        nombreArchivo = arg.Value.ToString();
         var data = await FileUtil.ReadFileByID("planilla");
         formCarga.ListaFile = new ByteArrayContent(Convert.FromBase64String(data));
     }
