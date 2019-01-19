@@ -35,7 +35,6 @@ else
                         <span class="input-group-text" id="seleccionar-fecha">Fecha</span>
                     </div>
                     <select name="fechas" class="custom-select" value="@fechaSeleccionada" onchange="@onDateChanged" required>
-                        <option selected>Selecciona una fecha</option>
                         @foreach (var fecha in listaFechas)
                         {
                             <option value=@fecha.Fecha>@fecha.Fecha.ToString("yyyy-MM-dd")</option>
