@@ -18,7 +18,7 @@ else
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="buscar-addon">Buscar por Nombre</span>
                     </div>
-                    <input type="text" placeholder="ABACO" value=@searchCriteria oninput=@OnChangeSearchCriteria class="form-control" aria-describedby="buscar-addon" aria-label="Buscar Articulo" />
+                    <input type="text" placeholder="Articulos" value=@searchCriteria oninput=@OnChangeSearchCriteria class="form-control" aria-describedby="buscar-addon" aria-label="Buscar Articulo" />
                 </div>
             </div>
             <div class="col">
@@ -26,7 +26,13 @@ else
                     <div class="input-group-prepend">
                         <span class="input-group-text" id="buscar-codigo">Buscar por Lista</span>
                     </div>
-                    <input type="text" placeholder="Powerland" value=@searchCriteriaList oninput=@OnChangeListSearch class="form-control" aria-describedby="buscar-codigo" aria-label="Buscar por código" />
+                    <select name="fechas" class="custom-select" bind="@searchCriteriaList" required>
+                        <option value="" selected>-- Lista --</option>
+                        @foreach (var lista in listaSelect)
+                        {
+                            <option value=@lista>@lista</option>
+                        }
+                    </select>
                 </div>
             </div>
             <div class="col">
@@ -50,16 +56,17 @@ else
 }
 
 @functions {
-    LibreriaPrice[] precios;
+    IEnumerable<LibreriaPrice> precios;
     IEnumerable<LibreriaPrice> topPrecios;
-
-    ListaFechas[] listaFechas;
+    IEnumerable<ListaFechas> listaFechas;
+    IEnumerable<LoadedList> listasCargadas;
+    IEnumerable<string> listaSelect;
 
     string searchCriteria;
     string searchCriteriaList;
+
     int total;
     bool loading = true;
-
     DateTime fechaSeleccionada;
 
     async Task OnChangeSearchCriteria(UIChangeEventArgs arg)
@@ -79,15 +86,29 @@ else
 
     }
 
+    async Task onSelectedList(UIChangeEventArgs args)
+    {
+
+    }
+
     protected async Task SetPriceListByDate(DateTime date)
     {
         loading = true;
         fechaSeleccionada = date;
+
+        listasCargadas = await LibreriaPriceservice.GetLoadedList();
+        searchCriteriaList = "";
+
+        listaSelect = (from l in listasCargadas
+                       where l.Fecha == fechaSeleccionada
+                       select l.Lista);
+
         precios = await LibreriaPriceservice.GetPricesByDate(fechaSeleccionada).ConfigureAwait(false);
         topPrecios = await Task.Run(() => (from p in precios
                                            where p.Desc.Contains(searchCriteria) && (String.IsNullOrEmpty(searchCriteriaList.Trim()) || p.Lista.Equals(searchCriteriaList))
                                            select p).Take(20)).ConfigureAwait(false);
-        total = precios.Length;
+
+        total = precios.Count();
         loading = false;
     }
 
@@ -96,15 +117,11 @@ else
         searchCriteria = "";
         searchCriteriaList = "";
         total = 0;
-
+ 
         var date = await LibreriaPriceservice.GetLastDateAsync().ConfigureAwait(false);
-
         await SetPriceListByDate(date).ConfigureAwait(false);
 
         listaFechas = await LibreriaPriceservice.GetLoadedDates().ConfigureAwait(false);
-
-        loading = false;
     }
-
 
 }

@@ -15,4 +15,11 @@ namespace LibreriaAlvarez.WebApp.Services
     {
         public DateTime Fecha { get; set; }
     }
+
+    public class LoadedList
+    {
+        public int Registros { get; set; }
+        public string Lista { get; set; }
+        public DateTime Fecha { get; set; }
+    }
 }

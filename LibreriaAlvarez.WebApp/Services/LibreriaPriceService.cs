@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Blazor;
 using OfficeOpenXml;
 using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
 using System.Net.Http;
@@ -21,31 +22,30 @@ namespace LibreriaAlvarez.WebApp.Services
         }
 
         public async Task<DateTime> GetLastDateAsync()
-        {
-            return await _httpClient.GetJsonAsync<DateTime>(APIBaseURL + "get-last-date");
-        }
+            => await _httpClient.GetJsonAsync<DateTime>(APIBaseURL + "get-last-date");
+   
 
-        public async Task<LibreriaPrice[]> GetPricesByDate(DateTime fecha)
-        {
-            return await _httpClient.GetJsonAsync<LibreriaPrice[]>(APIBaseURL + "prices-by-fecha?fecha=" + fecha.ToString("yyyy-MM-dd"));
-        }
+        public async Task<IEnumerable<LibreriaPrice>> GetPricesByDate(DateTime fecha)
+            => await _httpClient.GetJsonAsync<IEnumerable<LibreriaPrice>>(APIBaseURL + "prices-by-fecha?fecha=" + fecha.ToString("yyyy-MM-dd"));
+        
 
-        public async Task<ListaFechas[]> GetLoadedDates()
-        {
-      
-            return await _httpClient.GetJsonAsync<ListaFechas[]>(APIBaseURL + "get-all-dates").ConfigureAwait(false);
-        }
+        public async Task<IEnumerable<ListaFechas>> GetLoadedDates()
+            => await _httpClient.GetJsonAsync<IEnumerable<ListaFechas>>(APIBaseURL + "get-all-dates").ConfigureAwait(false);
+
+
+        public async Task<IEnumerable<LoadedList>> GetLoadedList()
+             => await _httpClient.GetJsonAsync<IEnumerable<LoadedList>>(APIBaseURL + "get-all-loaded-lists").ConfigureAwait(false);
 
         public async Task<HttpResponseMessage> PostCargarPlanilla(MultipartFormDataContent form) 
             => await _httpClient.PostAsync(APIBaseURL + "cargar-lista", form);
 
-        public async Task DownLoadExcel(LibreriaPrice[] precios)
+        public async Task DownLoadExcel(IEnumerable<LibreriaPrice> precios)
         {
             await Task.Run(async () =>
             {
                 using (var package = new ExcelPackage())
                 {
-
+                    var preciosCount = precios.Count();
                     var worksheet = package.Workbook.Worksheets.Add("Lista Precios");
                     worksheet.DefaultColWidth = 25;
 
@@ -85,11 +85,11 @@ namespace LibreriaAlvarez.WebApp.Services
                     tableBody.Style.Border.BorderAround(OfficeOpenXml.Style.ExcelBorderStyle.Medium);
 
                     // formato del tipo de fecha
-                    var fechasCol = tableBody.Offset(0, 4, precios.Length, 1);
+                    var fechasCol = tableBody.Offset(0, 4, preciosCount, 1);
                     fechasCol.Style.Numberformat.Format = "DDD d MMM yyyy";
 
                     // formato del tipo de precio
-                    var precioCol = tableBody.Offset(0, 3, precios.Length, 1);
+                    var precioCol = tableBody.Offset(0, 3, preciosCount, 1);
                     precioCol.Style.Numberformat.Format = "$###,###,##0.00";
 
                     await FileUtil.SaveAs("PreciosLibreria.xlsx", package.GetAsByteArray()).ConfigureAwait(false);
