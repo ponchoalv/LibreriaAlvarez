@@ -44,6 +44,20 @@ app {
         top: -2px;
     }
 
+.greyout {
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+}   
+
+    .greyout > .cover {
+        background: rgba(150, 150, 150, 0.5);
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
 .nav-item {
     font-size: 0.9rem;
     padding-bottom: 0.5rem;

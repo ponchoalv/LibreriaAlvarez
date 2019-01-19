@@ -16,11 +16,8 @@
     </table>
 </div>
 
-
-}
-
 @functions {
     [Parameter] protected RenderFragment EncabezadoTabla { get; set; }
     [Parameter] protected RenderFragment<TItem> FilasTabla { get; set; }
-    [Parameter] protected IReadOnlyList<TItem> Items { get; set; }
+    [Parameter] protected IEnumerable<TItem> Items { get; set; }
 }

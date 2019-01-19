@@ -1,6 +1,7 @@
 ﻿@using LibreriaAlvarez.WebApp.Services
+@inject LibreriaPriceService LibreriaPriceservice
 
-<TemplateTabla Items=@ListaPrecios Context="precio">
+<TemplateTabla Items=@ListaPrecios Context="precio" TItem="LibreriaPrice">
     <EncabezadoTabla>
         <th>Descripción</th>
         <th>Lista</th>
@@ -15,6 +16,12 @@
     </FilasTabla>
 </TemplateTabla>
 
+<div class="d-flex flex-row-reverse">
+    <div class="p-2">
+        <button class="btn btn-info" onclick=@(async () => { await LibreriaPriceservice.DownLoadExcel(ListaPrecios.ToArray()); })>Descargar lista de precios filtrados</button>
+    </div>
+</div>
+
 @functions {
-    [Parameter] protected LibreriaPrice ListaPrecios { get; set; }
+    [Parameter] protected IEnumerable<LibreriaPrice> ListaPrecios { get; set; }
 }

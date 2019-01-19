@@ -10,4 +10,9 @@ namespace LibreriaAlvarez.WebApp.Services
         public string Desc { get; set; }
         public DateTime Fecha { get; set; }
     }
+
+    public class ListaFechas
+    {
+        public DateTime Fecha { get; set; }
+    }
 }
