@@ -1,0 +1,20 @@
+﻿@using LibreriaAlvarez.WebApp.Services
+
+<TemplateTabla Items=@ListaPrecios Context="precio">
+    <EncabezadoTabla>
+        <th>Descripción</th>
+        <th>Lista</th>
+        <th>Precio</th>
+        <th>Fecha de la Lista</th>
+    </EncabezadoTabla>
+    <FilasTabla>
+        <td>@precio.Desc</td>
+        <td>@precio.Lista</td>
+        <td>@precio.Price.ToString("C2")</td>
+        <td>@precio.Fecha.ToString("yyyy-MM-dd")</td>
+    </FilasTabla>
+</TemplateTabla>
+
+@functions {
+    [Parameter] protected LibreriaPrice ListaPrecios { get; set; }
+}
