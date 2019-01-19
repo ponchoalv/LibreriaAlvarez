@@ -11,7 +11,7 @@ namespace LibreriaAlvarez.WebApp.Services
         public DateTime Fecha { get; set; }
     }
 
-    public class ListaFechas
+    public class FechaDeLista
     {
         public DateTime Fecha { get; set; }
     }

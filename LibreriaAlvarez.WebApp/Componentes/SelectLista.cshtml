@@ -1,0 +1,17 @@
+﻿<div class="input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="buscar-codigo">Lista</span>
+    </div>
+    <select name="fechas" class="custom-select" value="@ListaSeleccionada" onchange="@OnSelectChange" required>
+        <option value="" selected>Todas</option>
+        @foreach (var lista in OpcionesListas)
+        {
+            <option value=@lista>@lista</option>
+        }
+    </select>
+</div>
+@functions {
+    [Parameter] protected string ListaSeleccionada { get; set; }
+    [Parameter] protected IEnumerable<string> OpcionesListas { get; set; }
+    [Parameter] protected Func<UIChangeEventArgs, Task> OnSelectChange { get; set; }
+}

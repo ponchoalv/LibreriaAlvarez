@@ -1,0 +1,18 @@
+﻿@using LibreriaAlvarez.WebApp.Services
+
+<div class="input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="seleccionar-fecha">Fecha</span>
+    </div>
+    <select name="fechas" class="custom-select" value="@FechaSeleccionada" onchange="@OnDateChanged" required>
+        @foreach (var fecha in OpcionesFechas)
+        {
+            <option value=@fecha.Fecha>@fecha.Fecha.ToString("yyyy-MM-dd")</option>
+        }
+    </select>
+</div>
+@functions {
+    [Parameter] protected DateTime FechaSeleccionada { get; set; }
+    [Parameter] protected IEnumerable<FechaDeLista> OpcionesFechas { get; set; }
+    [Parameter] protected Func<UIChangeEventArgs, Task> OnDateChanged { get; set; }
+}

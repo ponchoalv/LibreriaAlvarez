@@ -23,15 +23,12 @@ namespace LibreriaAlvarez.WebApp.Services
 
         public async Task<DateTime> GetLastDateAsync()
             => await _httpClient.GetJsonAsync<DateTime>(APIBaseURL + "get-last-date");
-   
 
         public async Task<IEnumerable<LibreriaPrice>> GetPricesByDate(DateTime fecha)
             => await _httpClient.GetJsonAsync<IEnumerable<LibreriaPrice>>(APIBaseURL + "prices-by-fecha?fecha=" + fecha.ToString("yyyy-MM-dd"));
         
-
-        public async Task<IEnumerable<ListaFechas>> GetLoadedDates()
-            => await _httpClient.GetJsonAsync<IEnumerable<ListaFechas>>(APIBaseURL + "get-all-dates").ConfigureAwait(false);
-
+        public async Task<IEnumerable<FechaDeLista>> GetLoadedDates()
+            => await _httpClient.GetJsonAsync<IEnumerable<FechaDeLista>>(APIBaseURL + "get-all-dates").ConfigureAwait(false);
 
         public async Task<IEnumerable<LoadedList>> GetLoadedList()
              => await _httpClient.GetJsonAsync<IEnumerable<LoadedList>>(APIBaseURL + "get-all-loaded-lists").ConfigureAwait(false);

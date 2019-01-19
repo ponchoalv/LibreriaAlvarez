@@ -1,0 +1,10 @@
+﻿<div class="input-group">
+    <div class="input-group-prepend">
+        <span class="input-group-text" id="buscar-addon">Buscar</span>
+    </div>
+    <input type="text" placeholder="Articulo" value=@ValueTarget oninput=@OnInputFunction class="form-control" aria-describedby="buscar-addon" aria-label="Buscar Articulo" />
+</div>
+@functions {
+    [Parameter] protected string ValueTarget { get; set; }
+    [Parameter] protected Func<UIChangeEventArgs, Task> OnInputFunction { get; set; }
+}
